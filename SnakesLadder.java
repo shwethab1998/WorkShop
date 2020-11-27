@@ -1,38 +1,43 @@
 import java.util.Random;
 public class SnakesLadder
 {
-        public int PLAYER_POS=0,player=PLAYER_POS,die_roll;   //UC1, initializing player position
+        public int PLAYER_POS=0; //UC1, initializing player position as 0
+	public int die_roll,player=PLAYER_POS;
         public void rolldice()
         {
                 Random random=new Random();
                 die_roll=random.nextInt(6)+1;
-                System.out.println("Number Rolled is:"+die_roll);
 	}
 	public void Option()
 	{
+		while(player<=100)
+                {
+		rolldice();
 		Random option_random=new Random();
                 int option=option_random.nextInt(3);
 		switch(option)
 		{
                 case 1:
-                        System.out.println("You got Ladder, Mover Forward!!");
-                        player+=+die_roll;
+			player+=die_roll;
+                        System.out.println("You got Ladder!!");
                 break;
 		case 0:
-                System.out.println("You got Snake :(");
-			if(player==0)
+			if(player<0)
 			{
                         player=PLAYER_POS;
                 	}
-			else
+			else{
 			player=-die_roll;
+			}
+			System.out.println("You got Snake!!");
 		break;
                 default:
-                        System.out.println("No Play!!");
                         player=player;
-                break;
+			System.out.println("No Play!!");
+		break;
 		}
-                System.out.println("Player's Postition is:"+player);
+		}
+		System.out.println("Player Won, Position is now:"+player);
         }
         public static void main(String[] args)
         {
