@@ -1,11 +1,13 @@
+import java.util.Random;
 public class SnakesLadder
 {
 
         public static void main(String[] args)
         {
                 int start_pos=0;
-                System.out.println(start_pos);
-
+                Random r=new Random();
+		int die=r.nextInt(6)+1;
+		System.out.println(die);
         }
 
 }
