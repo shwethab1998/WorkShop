@@ -2,7 +2,7 @@ import java.util.Random;
 public class SnakesLadder
 {
         public static int PLAYER_POS=0; //UC1, initializing player position as 0
-	public static int die_roll,player=PLAYER_POS;
+	public static int die_roll,player=PLAYER_POS,dieCounter=0;
         public void rolldice()
         {
                 Random random=new Random();
@@ -24,7 +24,7 @@ public class SnakesLadder
                         System.out.println("You got Ladder!!:");
                 break;
 		case 0:
-			player=-die_roll;
+			player-=die_roll;
 			if(player<0)
 			{
                         player=PLAYER_POS;
@@ -35,22 +35,20 @@ public class SnakesLadder
 			System.out.println("No Play!!: ");
 		break;
 		}
+		dieCounter++;
         }
         public static void main(String[] args)
         {
                 SnakesLadder user=new SnakesLadder();
-		while(player<100)
+                while(player<100)
 		{
-		user.rolldice();   //UC2, dice roll b/w 1-6
-		user.Option();     //UC3, dice output options
-		System.out.println("Position is:"+player);
-		}
-		System.out.println("Player won, Position is:"+player);
-	}
+			user.rolldice();
+			user.Option();
+                }
+		System.out.println("Die was thrown "+dieCounter+" times");
+                System.out.println("Player won!!, Position is:"+player);
+        }
 }
-
-
-
 
 
 
